@@ -28,7 +28,8 @@
 
 body { margin: 0; padding: 0; overflow: hidden; background-color: var(--app-bg); font-family: 'Montserrat', sans-serif; -webkit-font-smoothing: antialiased; }
 
-.screen { width: 100vw; height: 100vh; position: relative; display: flex; flex-direction: column; transition: background-color 1s ease, color 1s ease; color: var(--app-text); overflow: hidden; }
+/* AQUÍ ESTABA EL ERROR: Faltaba el background-color en .screen */
+.screen { width: 100vw; height: 100vh; position: relative; display: flex; flex-direction: column; transition: background-color 1s ease, color 1s ease; background-color: var(--app-bg); color: var(--app-text); overflow: hidden; }
 
 .app-aura { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 240px; height: 240px; border-radius: 50%; background-color: var(--orb-core); filter: blur(45px); box-shadow: 0 0 50px 25px var(--orb-glow-1), 0 0 120px 60px var(--orb-glow-2), 0 0 240px 120px var(--orb-glow-3); z-index: 1; pointer-events: none; animation: orb-breathe 6s ease-in-out infinite alternate; }
 @keyframes orb-breathe { 0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; } }
@@ -68,14 +69,13 @@ body { margin: 0; padding: 0; overflow: hidden; background-color: var(--app-bg);
 .sq-5 { width: 70px; height: 70px; top: 5%; left: 65%; animation-duration: 11s; animation-delay: 5s; }
 
 /* SPLASH Y LOGO COREOGRAFÍA MEJORADA */
-.agora-splash { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--app-bg); z-index: 60; opacity: 0; pointer-events: none; }
+.agora-splash { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--app-bg); z-index: 60; opacity: 0; pointer-events: none; transition: opacity 0.8s ease; }
 .agora-splash.is-active { opacity: 1; pointer-events: all; }
 
 .dynamic-logo { position: absolute; background-position: center; background-repeat: no-repeat; background-size: contain; width: 280px; height: 100px; z-index: 100; pointer-events: none; }
 .logo-hidden { opacity: 0; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); }
 .logo-splash { opacity: 1; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1); }
 .logo-header { opacity: 0.15; top: 35px; left: 50%; transform: translate(-50%, 0) scale(0.35); }
-
 
 /* VISTAS Y CARRUSEL */
 .view { display: none; flex: 1; padding: 120px 24px 100px 24px; overflow-y: auto; position: relative; z-index: 10; animation: fade 0.4s ease; }
@@ -135,10 +135,7 @@ input:checked + .toggle-slider:before { transform: translateX(20px); background-
 .session-card { min-width: 100vw; height: 100%; scroll-snap-align: center; display: flex; flex-direction: column; justify-content: center; padding: 40px; box-sizing: border-box; opacity: 0.15; transition: all 0.5s ease; transform: scale(0.9); position: relative; }
 .session-card.is-active-card { opacity: 1; transform: scale(1); }
 
-/* CENTRO RESTAURADO */
 .s-content { flex: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
-
-/* TÍTULOS INFERIORES BAJADOS */
 .s-title-bottom { font-size: 10px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; text-align: center; opacity: 0.4; position: absolute; bottom: 95px; width: 100%; left: 0; pointer-events: none; }
 
 /* DISEÑOS ESPECÍFICOS DE SESIONES */
